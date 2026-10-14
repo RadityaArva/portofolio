@@ -1,0 +1,303 @@
+import { photos } from './photography-data.js';
+
+const $ = (id) => document.getElementById(id);
+const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+// State
+let activeFilter = 'all';
+let currentLightboxIndex = -1;
+let filteredPhotos = [...photos];
+
+// Theme Switcher
+const root = document.documentElement;
+
+function initTheme() {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    root.setAttribute('data-theme', saved);
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+  }
+  updateThemeIcons();
+}
+
+function toggleTheme() {
+  const current = root.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateThemeIcons();
+}
+
+function updateThemeIcons() {
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  const icon = isDark ? 'fa-sun' : 'fa-moon';
+  const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+
+  ['themeTogglePhoto', 'themeToggleMobile'].forEach((id) => {
+    const btn = $(id);
+    if (!btn) return;
+    btn.innerHTML = `<i class="fas ${icon}"></i>`;
+    btn.setAttribute('aria-label', label);
+  });
+}
+
+// Mobile Menu
+function initMobileMenu() {
+  const toggle = $('photoMenuToggle');
+  const menu = $('photoMobileMenu');
+  if (!toggle || !menu) return;
+
+  function open() {
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.contains('open');
+    if (isOpen) close(); else open();
+  });
+
+  const backdrop = menu.querySelector('.photo-mobile-menu-backdrop');
+  if (backdrop) backdrop.addEventListener('click', close);
+
+  $$('.photo-mobile-menu-nav a').forEach((link) => {
+    link.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) close();
+  });
+}
+
+// Render Gallery Grid
+function renderGallery(filter = 'all') {
+  const grid = $('photoGrid');
+  const empty = $('filterEmpty');
+  if (!grid) return;
+
+  activeFilter = filter;
+  filteredPhotos = photos.filter((p) => !p.featured && (filter === 'all' || p.category === filter));
+
+  if (filteredPhotos.length === 0) {
+    grid.innerHTML = '';
+    if (empty) empty.classList.remove('hidden');
+    return;
+  }
+
+  if (empty) empty.classList.add('hidden');
+
+  grid.innerHTML = filteredPhotos
+    .map((photo, idx) => {
+      const bentoClass = `bento-${photo.bentoSize || 'medium'}`;
+      const ar = photo.width && photo.height ? `${photo.width} / ${photo.height}` : '4 / 3';
+      return `
+        <figure class="photo-card ${bentoClass}" data-id="${photo.id}" data-index="${idx}" tabindex="0" role="button" aria-label="View photograph: ${escapeHtml(photo.title)}" style="--ar: ${ar}">
+          <div class="photo-card-media">
+            <img
+              src="${photo.thumb}"
+              alt="${escapeHtml(photo.title)} - ${escapeHtml(photo.caption)}"
+              width="${photo.width || 800}"
+              height="${photo.height || 600}"
+              loading="${idx < 6 ? 'eager' : 'lazy'}"
+              decoding="async"
+              fetchpriority="${idx < 2 ? 'high' : 'auto'}"
+            />
+            <div class="photo-card-scrim"></div>
+            <span class="photo-card-chip">${capitalize(photo.category)}</span>
+            <figcaption class="photo-card-caption">
+              <h3 class="photo-card-title">${escapeHtml(photo.title)}</h3>
+              <p class="photo-card-sub">${escapeHtml(photo.location || '')}</p>
+            </figcaption>
+          </div>
+        </figure>
+      `;
+    })
+    .join('');
+
+  attachCardEvents();
+}
+
+function attachCardEvents() {
+  $$('.photo-card').forEach((card) => {
+    const handler = () => {
+      const idx = parseInt(card.dataset.index, 10);
+      openLightbox(idx);
+    };
+
+    card.addEventListener('click', handler);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handler();
+      }
+    });
+  });
+}
+
+// Filter Bar
+function initFilters() {
+  const pills = $$('.filter-pill');
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      pills.forEach((p) => {
+        p.classList.remove('active');
+        p.setAttribute('aria-selected', 'false');
+      });
+      pill.classList.add('active');
+      pill.setAttribute('aria-selected', 'true');
+
+      const filter = pill.dataset.filter || 'all';
+      renderGallery(filter);
+    });
+  });
+}
+
+// Lightbox
+function initLightbox() {
+  const lightbox = $('lightbox');
+  if (!lightbox) return;
+
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  const backdrop = lightbox.querySelector('.lightbox-backdrop');
+  const prevBtn = lightbox.querySelector('.lightbox-nav.prev');
+  const nextBtn = lightbox.querySelector('.lightbox-nav.next');
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (backdrop) backdrop.addEventListener('click', closeLightbox);
+  if (prevBtn) prevBtn.addEventListener('click', () => navigateLightbox(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => navigateLightbox(1));
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+
+  // Featured card click -> opens featured photo in lightbox
+  const featuredCard = document.querySelector('.featured-card');
+  if (featuredCard) {
+    const handleFeatured = () => {
+      const featPhoto = photos.find((p) => p.featured) || photos[0];
+      openLightboxCustom(featPhoto);
+    };
+
+    featuredCard.addEventListener('click', handleFeatured);
+    featuredCard.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleFeatured();
+      }
+    });
+  }
+}
+
+function openLightbox(index) {
+  if (index < 0 || index >= filteredPhotos.length) return;
+  currentLightboxIndex = index;
+  const photo = filteredPhotos[index];
+  updateLightboxContent(photo, `${index + 1} / ${filteredPhotos.length}`);
+  showLightbox();
+}
+
+function openLightboxCustom(photo) {
+  currentLightboxIndex = -1;
+  updateLightboxContent(photo, 'Featured');
+  showLightbox();
+}
+
+function updateLightboxContent(photo, counterText) {
+  const img = $('lightboxImg');
+  const title = $('lightboxTitle');
+  const desc = $('lightboxDesc');
+  const details = $('lightboxDetails');
+  const counter = $('lightboxCounter');
+
+  if (img) {
+    img.src = photo.src;
+    img.alt = photo.title;
+  }
+  if (title) title.textContent = photo.title;
+  if (desc) desc.textContent = photo.caption;
+  if (counter) counter.textContent = counterText;
+
+  if (details) {
+    details.innerHTML = `
+      ${photo.location ? `<span><i class="fas fa-location-dot"></i> ${escapeHtml(photo.location)}</span>` : ''}
+      ${photo.date ? `<span><i class="far fa-calendar"></i> ${escapeHtml(photo.date)}</span>` : ''}
+      ${photo.camera ? `<span><i class="fas fa-camera"></i> ${escapeHtml(photo.camera)}</span>` : ''}
+      ${photo.settings ? `<span><i class="fas fa-sliders"></i> ${escapeHtml(photo.settings)}</span>` : ''}
+    `;
+  }
+}
+
+function showLightbox() {
+  const lb = $('lightbox');
+  if (!lb) return;
+  lb.classList.remove('hidden');
+  lb.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lb = $('lightbox');
+  if (!lb) return;
+  lb.classList.add('hidden');
+  lb.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function navigateLightbox(dir) {
+  if (currentLightboxIndex === -1) return; // Featured item single view
+  let next = currentLightboxIndex + dir;
+  if (next < 0) next = filteredPhotos.length - 1;
+  if (next >= filteredPhotos.length) next = 0;
+  openLightbox(next);
+}
+
+// Helpers
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function capitalize(str) {
+  if (!str) return '';
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+// Year Footer
+function initYear() {
+  const el = $('photoYear');
+  if (el) el.textContent = new Date().getFullYear();
+}
+
+// DOM Ready
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initMobileMenu();
+  renderGallery('all');
+  initFilters();
+  initLightbox();
+  initYear();
+
+  $('themeTogglePhoto')?.addEventListener('click', toggleTheme);
+  $('themeToggleMobile')?.addEventListener('click', toggleTheme);
+});

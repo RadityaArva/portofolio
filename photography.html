@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="author" content="Raditya Arva Messi Jagaddhita" />
+  <title>Photography — Through My Lens | Raditya Arva</title>
+  <meta name="description" content="Photography archive by Raditya Arva — moments, places, people, and stories captured through my perspective. Curated editorial exhibition." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=optional" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>html{scroll-behavior:smooth;scroll-padding-top:88px}section[id]{scroll-margin-top:88px}</style>
+  <link rel="stylesheet" href="/src/photography.css" />
+</head>
+<body>
+  <div id="scrollProgress" class="scroll-progress" aria-hidden="true"></div>
+  <div id="preloader" class="preloader hidden" aria-hidden="true">
+    <div class="preloader-content"><div class="spinner"></div><p>Memuat foto...</p></div>
+  </div>
+  <nav id="photoNav" class="photo-nav" aria-label="Primary">
+    <div class="photo-nav-inner">
+      <a href="/" class="photo-nav-brand">Raditya<span>.</span></a>
+      <ul class="photo-nav-links">
+        <li><a href="/">Portfolio</a></li>
+        <li><a href="#featured">Featured</a></li>
+        <li><a href="#archive">Archive</a></li>
+        <li><a href="#story">Story</a></li>
+      </ul>
+      <div class="photo-nav-actions">
+        <a href="/#contact" class="photo-nav-cta" id="navCta">Get in Touch</a>
+        <button id="themeTogglePhoto" type="button" class="photo-nav-theme" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+        <button id="photoMenuToggle" type="button" class="photo-nav-burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="photoMobileMenu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div id="photoMobileMenu" class="photo-mobile-menu" aria-hidden="true" role="dialog" aria-modal="false">
+    <div class="photo-mobile-menu-backdrop" data-close-menu></div>
+    <div class="photo-mobile-menu-panel">
+      <nav class="photo-mobile-menu-nav">
+        <a href="/">Portfolio</a>
+        <a href="#featured">Featured</a>
+        <a href="#archive">Archive</a>
+        <a href="#story">Story</a>
+      </nav>
+      <div class="photo-mobile-menu-footer">
+        <a href="/#contact" class="mobile-cta">Get in Touch</a>
+        <button id="themeToggleMobile" type="button" class="photo-nav-theme" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </div>
+  <header class="photo-hero" id="top">
+    <div class="photo-hero-bg" aria-hidden="true">
+      <img src="/img/IMG_9409 2.JPG" alt="" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async" />
+      <div class="photo-hero-scrim"></div>
+    </div>
+    <div class="photo-hero-content">
+      <p class="photo-eyebrow">PHOTOGRAPHY ARCHIVE — EST. 2024</p>
+      <h1 class="photo-hero-title"><span><i>Through</i></span><span class="italic"><i>My Lens</i></span></h1>
+      <p class="photo-hero-desc">Moments captured through my perspective. A personal collection of light, time, and stories from everyday life.</p>
+      <div class="photo-hero-meta"><span><span id="photoCount">—</span> Photos</span><span class="dot"></span><span id="photoDateRange"></span></div>
+    </div>
+    <a href="#featured" class="photo-scroll-indicator" aria-label="Scroll to featured"><span>Explore Archive</span><span class="scroll-line"></span></a>
+  </header>
+  <section id="featured" class="photo-featured reveal">
+    <div class="container-photo">
+      <div class="section-head"><p class="photo-eyebrow">01 — FEATURED</p><h2 class="section-title">A single frame, held longer</h2></div>
+      <figure class="featured-card" data-photo-id="featured" tabindex="0" role="button" aria-label="Open featured photograph">
+        <div class="featured-media">
+          <img alt="" width="1600" height="900" loading="eager" decoding="async" fetchpriority="high" />
+          <div class="featured-gradient"></div>
+          <figcaption class="featured-meta"><div class="featured-meta-top"><span id="featuredCategory" class="featured-category"></span><span id="featuredNo" class="featured-no"></span></div><h3 id="featuredTitle" class="featured-title"></h3><div class="featured-details"><span><i class="far fa-calendar"></i> <span id="featuredDate"></span></span><span><i class="fas fa-camera"></i> <span id="featuredCamera"></span></span></div></figcaption>
+        </div>
+      </figure>
+    </div>
+  </section>
+  <section id="archive" class="photo-archive reveal">
+    <div class="container-photo">
+      <div class="section-head row"><div><p class="photo-eyebrow">02 — CURATED ARCHIVE</p><h2 class="section-title">Every frame has a story</h2></div><p class="section-desc">A personal collection of moments from everyday life, captured and curated.</p></div>
+      <div class="filter-wrap">
+        <div class="filter-bar" role="tablist" aria-label="Photo categories">
+          <span class="filter-indicator" aria-hidden="true"></span>
+          <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All <span class="filter-count" data-filter-count="all"></span></button>
+          <button class="filter-pill" data-filter="street" role="tab" aria-selected="false">Street <span class="filter-count" data-filter-count="street"></span></button>
+          <button class="filter-pill" data-filter="landscape" role="tab" aria-selected="false">Landscape <span class="filter-count" data-filter-count="landscape"></span></button>
+          <button class="filter-pill" data-filter="portrait" role="tab" aria-selected="false">Portrait <span class="filter-count" data-filter-count="portrait"></span></button>
+          <button class="filter-pill" data-filter="architecture" role="tab" aria-selected="false">Architecture <span class="filter-count" data-filter-count="architecture"></span></button>
+          <button class="filter-pill" data-filter="event" role="tab" aria-selected="false">Event <span class="filter-count" data-filter-count="event"></span></button>
+          <button class="filter-pill" data-filter="experimental" role="tab" aria-selected="false">Experimental <span class="filter-count" data-filter-count="experimental"></span></button>
+        </div>
+      </div>
+      <div id="photoGrid" class="photo-grid"></div>
+      <p id="filterEmpty" class="filter-empty hidden">No photographs in this category yet.</p>
+    </div>
+  </section>
+  <section id="story" class="photo-story reveal">
+    <div class="container-photo">
+      <p class="photo-eyebrow">03 — THE STORY</p>
+      <div class="story-grid">
+        <figure class="story-media">
+          <div class="story-media-frame">
+            <img id="storyImage" src="/img/WhatsApp%20Image%202026-10-06%20at%2002.21.17.jpeg" alt="A couple sit beneath a canopy of flowers and fabric while guests watch from around the decorated table." width="854" height="1280" loading="lazy" decoding="async" />
+            <p class="story-image-error" role="status" hidden>Foto gagal dimuat</p>
+          </div>
+          <figcaption>A flower-filled gathering beneath a draped canopy.</figcaption>
+        </figure>
+        <div class="story-text">
+          <span class="story-kicker">THE STORY — A SINGLE FRAME</span>
+          <h2 class="story-title">A Room Full of Flowers</h2>
+          <p class="story-body">There is more to this frame than the moment at its center.</p>
+          <p class="story-body">Flowers and fabric draw my eye toward the couple, while the guests remain part of the scene around them. I photographed from within the gathering, keeping the canopy, the table, and the people in the same frame.</p>
+          <p class="story-body muted">Leaves hang overhead and soft draping catches the light. I wanted to hold the whole room together in one photograph, with its details leading back to the quiet focus in the middle.</p>
+          <a href="#archive" class="story-link">Explore related frames <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="photo-footer">
+    <div class="container-photo">
+      <div class="photo-footer-top"><p class="photo-footer-quote">“Captured through my perspective.”</p><p class="photo-footer-sub">Every photograph here was taken by me. No stock, no placeholders that aren't mine to revisit. If you want to use a frame, just ask.</p></div>
+      <div class="photo-footer-bottom"><div class="photo-footer-links"><a href="https://www.instagram.com/sudoaptremove/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a><a href="mailto:radityaarvamessijagaddhita@gmail.com"><i class="far fa-envelope"></i> Email</a><a href="/"><i class="fas fa-arrow-left"></i> Back to Portfolio</a></div><a href="#top" class="photo-back-top">Back to top <i class="fas fa-arrow-up"></i></a></div>
+      <p class="photo-footer-copy">© <span id="photoYear"></span> Raditya Arva Messi Jagaddhita · All photographs © Raditya Arva.</p>
+    </div>
+  </footer>
+  <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+    <div class="lightbox-backdrop" data-close-lightbox></div>
+    <div class="lightbox-shell">
+      <div class="lightbox-toolbar">
+        <div class="lightbox-counter"><span id="lightboxCounter"></span></div>
+        <button class="lightbox-close" type="button" aria-label="Close"><i class="fas fa-xmark"></i></button>
+      </div>
+      <figure class="lightbox-figure">
+        <div class="lightbox-image-frame">
+          <img id="lightboxImg" class="is-loading" alt="" width="1600" height="1000" loading="eager" decoding="async" />
+          <p class="lightbox-error" role="status" hidden>Foto gagal dimuat</p>
+        </div>
+        <figcaption class="lightbox-meta"><h3 id="lightboxTitle"></h3><p id="lightboxDesc"></p><div id="lightboxDetails" class="lightbox-details"></div></figcaption>
+      </figure>
+      <div class="lightbox-controls">
+        <button class="lightbox-nav prev" type="button" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-nav next" type="button" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+  <a href="#top" id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+  <div id="customCursor" class="custom-cursor" aria-hidden="true"></div>
+  <script type="module" src="/src/photography.js"></script>
+</body>
+</html>

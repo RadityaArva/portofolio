@@ -1,0 +1,732 @@
+// Photography Data - Generated Automatically
+export const photos = [
+  {
+    "src": "/img/fe5cb870-7881-4b70-88aa-e1fc238f3823 2.JPG",
+    "width": 960,
+    "height": 1280,
+    "title": "High-Rises Beyond Palms",
+    "category": "architecture",
+    "caption": "Palm trees and low storefronts line a sunlit street below two pale high-rise towers.",
+    "alt": "High-rises and palms along a sunny urban street.",
+    "date": "2026-09-30",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/02f36376-ce1a-4f9f-b002-c313d5ceb62e 2.jpg",
+    "width": 3024,
+    "height": 4032,
+    "title": "Mountain Over Green Fields",
+    "category": "landscape",
+    "caption": "A mountain rises beyond an open green field beneath broad, broken clouds.",
+    "alt": "A mountain beyond a green field and roadside verge.",
+    "date": "2026-09-26",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/776633de-84ac-4b78-8401-f2eceb9c0d2d 2.jpg",
+    "width": 2340,
+    "height": 4160,
+    "title": "Red Roof Among Trees",
+    "category": "architecture",
+    "caption": "A red, tiered roof appears through dense tree cover under a bright overcast sky.",
+    "alt": "A red tiered roof seen through leafy trees.",
+    "date": "2026-09-26",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/ofm 2026-09-02 151744.JPG",
+    "width": 2688,
+    "height": 4032,
+    "title": "Lake Beneath Distant Towers",
+    "category": "landscape",
+    "caption": "Calm water fills the foreground, with a distant skyline framed by leafy branches.",
+    "alt": "Still lake water beneath tree branches and distant towers.",
+    "date": "2026-09-02",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "4mm · f/1.8 · 1/8197 · ISO 32"
+    }
+  },
+  {
+    "src": "/img/IMG_4488 2.JPG",
+    "width": 2268,
+    "height": 4032,
+    "title": "Tiered Roof Among Trees",
+    "category": "architecture",
+    "caption": "A steep red roof rises between mature trees beside a wide paved road.",
+    "alt": "A red roof partly hidden by roadside trees.",
+    "date": "2026-09-02",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "6mm · f/2 · 1/2398 · ISO 20"
+    }
+  },
+  {
+    "src": "/img/IMG_4481 2.JPG",
+    "width": 2268,
+    "height": 4032,
+    "title": "Skyline Framed by Leaves",
+    "category": "landscape",
+    "caption": "A cluster of pale high-rises stands across blue water beneath a leafy canopy.",
+    "alt": "Distant high-rises across a lake framed by foliage.",
+    "date": "2026-09-02",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "4mm · f/1.8 · 1/934 · ISO 32"
+    }
+  },
+  {
+    "src": "/img/IMG_6622 2.JPG",
+    "width": 3024,
+    "height": 4032,
+    "title": "Violet Car in Sunlight",
+    "category": "street",
+    "caption": "A dark violet sports car with yellow detailing moves along a tree-lined road.",
+    "alt": "A violet sports car with yellow detailing on a road.",
+    "date": "2026-08-11",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11",
+      "settings": "4mm · f/1.8 · 1/1464 · ISO 32"
+    }
+  },
+  {
+    "src": "/img/10cd57ea-19ad-461b-ae36-e3938b6a14f2 2.jpg",
+    "width": 3024,
+    "height": 4032,
+    "title": "Yellow Car Under Trees",
+    "category": "street",
+    "caption": "A yellow sports car rests on a shaded lane beneath mature trees.",
+    "alt": "A yellow car parked beneath leafy trees.",
+    "date": "2026-07-26",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/IMG_3339_SnapseedCopy 2.jpg",
+    "width": 2268,
+    "height": 4032,
+    "title": "Desk in Window Light",
+    "category": "experimental",
+    "caption": "A keyboard and chair sit at a desk lit by a bright window in a dark room.",
+    "alt": "A desk and chair beside a bright window.",
+    "date": "2026-07-10",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "6mm · f/2 · 1/121 · ISO 160"
+    }
+  },
+  {
+    "src": "/img/IMG_3252 2.jpg",
+    "width": 3024,
+    "height": 4032,
+    "title": "Green Walkway and Towers",
+    "category": "architecture",
+    "caption": "A paved path crosses a green open space, with modern buildings rising beyond it.",
+    "alt": "A green walkway leading toward modern buildings.",
+    "date": "2026-07-09",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "4mm · f/1.8 · 1/1565 · ISO 32"
+    }
+  },
+  {
+    "src": "/img/ofm 2026-05-31 15503066.JPG",
+    "width": 2688,
+    "height": 4032,
+    "title": "Clocktower Above the Road",
+    "category": "architecture",
+    "caption": "A tall clock-topped structure stands across a wide road among trees and apartment blocks.",
+    "alt": "A roadside clocktower framed by trees and tall buildings.",
+    "date": "2026-05-31",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "4mm · f/1.8 · 1/2513 · ISO 32"
+    }
+  },
+  {
+    "src": "/img/ofm 2026-05-31 155017.JPG",
+    "width": 2688,
+    "height": 4032,
+    "title": "Tower Behind Palm Fronds",
+    "category": "architecture",
+    "caption": "A high-rise rises behind palm fronds and roadside greenery in strong daylight.",
+    "alt": "A high-rise partly hidden by palm fronds.",
+    "date": "2026-05-31",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "4mm · f/1.8 · 1/3984 · ISO 32"
+    }
+  },
+  {
+    "src": "/img/IMG_1861 2.jpg",
+    "width": 3024,
+    "height": 4032,
+    "title": "Corner Shop Beneath Branches",
+    "category": "street",
+    "caption": "A white corner storefront sits beneath dense branches beside parked scooters and cars.",
+    "alt": "A corner storefront beneath branches with scooters outside.",
+    "date": "2026-05-20",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "6mm · f/2 · 1/922 · ISO 20"
+    }
+  },
+  {
+    "src": "/img/IMG_1758 2.jpg",
+    "width": 3024,
+    "height": 4032,
+    "title": "Church Spires in Cloudlight",
+    "category": "architecture",
+    "caption": "Two pointed church spires rise above a dark tree line under a grey sky.",
+    "alt": "Twin church spires beneath a grey sky.",
+    "date": "2026-05-16",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "4mm · f/1.8 · 1/50 · ISO 320"
+    }
+  },
+  {
+    "src": "/img/IMG_0857 2.jpg",
+    "width": 2268,
+    "height": 4032,
+    "title": "Fields to Mountain",
+    "category": "landscape",
+    "caption": "Green rice plots and a small settlement stretch toward a hazy mountain beneath a pale sky.",
+    "alt": "Green fields and houses before a hazy mountain.",
+    "date": "2026-04-18",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "4mm · f/1.8 · 1/211 · ISO 32"
+    }
+  },
+  {
+    "src": "/img/original 2026-03-28 111860.JPG",
+    "width": 2268,
+    "height": 4032,
+    "title": "Horses of Golden Light",
+    "category": "event",
+    "caption": "Golden outlines trace two horse figures above spectators in a dark nighttime crowd.",
+    "alt": "Two golden illuminated horse figures above a crowd.",
+    "date": "2026-03-28",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "6mm · f/2 · 1/4785 · ISO 25"
+    }
+  },
+  {
+    "src": "/img/IMG_9409 2.JPG",
+    "width": 3024,
+    "height": 4032,
+    "title": "Palms Over Open Fields",
+    "category": "landscape",
+    "caption": "A broad field sits beneath tall palms, with low mountains beneath a bright blue sky.",
+    "alt": "Palm trees over a field beneath a blue sky.",
+    "date": "2026-03-22",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "6mm · f/2 · 1/872 · ISO 20"
+    }
+  },
+  {
+    "src": "/img/IMG_3910 2.jpg",
+    "width": 3024,
+    "height": 4032,
+    "title": "Crowd Beside Concrete Wall",
+    "category": "event",
+    "caption": "A large crowd gathers beside a high concrete wall under temporary red canopies.",
+    "alt": "A crowd beside a high wall and red canopies.",
+    "date": "2025-09-19",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "6mm · f/2 · 1/40 · ISO 200"
+    }
+  },
+  {
+    "src": "/img/IMG_3596 2.jpg",
+    "width": 2181,
+    "height": 3877,
+    "title": "Concrete Bands",
+    "category": "architecture",
+    "caption": "Dark horizontal bands in a concrete facade rise against a clouded blue sky.",
+    "alt": "A concrete facade rising into a cloudy sky.",
+    "date": "2025-09-11",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "6mm · f/2 · 1/856 · ISO 20"
+    }
+  },
+  {
+    "src": "/img/IMG_3173 2.JPG",
+    "width": 3024,
+    "height": 4032,
+    "title": "Neon Shops After Dark",
+    "category": "street",
+    "caption": "Bright shop signs and food stalls illuminate a crowded street after dark.",
+    "alt": "Bright storefront signs above a busy night street.",
+    "date": "2025-09-03",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "6mm · f/2 · 1/50 · ISO 500"
+    }
+  },
+  {
+    "src": "/img/IMG_2990 2.jpg",
+    "width": 3024,
+    "height": 4032,
+    "title": "Shoreline Beneath Branches",
+    "category": "landscape",
+    "caption": "People dot a sandy shoreline beneath a leafy branch, with calm water to the horizon.",
+    "alt": "A sandy shore, overhanging branch, and calm sea.",
+    "date": "2025-08-31",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "4mm · f/1.8 · 1/3497 · ISO 32"
+    }
+  },
+  {
+    "src": "/img/IMG_2368 2.jpg",
+    "width": 3024,
+    "height": 4032,
+    "title": "Team Beneath Banners",
+    "category": "event",
+    "caption": "Players gather on an indoor court beneath hanging banners and a championship display.",
+    "alt": "A team on an indoor court beneath banners.",
+    "date": "2025-08-08",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11 Pro",
+      "settings": "6mm · f/2 · 1/50 · ISO 200"
+    }
+  },
+  {
+    "src": "/img/IMG_9680 2.JPG",
+    "width": 5596,
+    "height": 3148,
+    "title": "Students in Courtyard",
+    "category": "event",
+    "caption": "Students in light uniforms sit and stand around a tree in a shaded courtyard.",
+    "alt": "Uniformed students gather around a tree.",
+    "date": "2025-05-13",
+    "location": null,
+    "exif": {
+      "camera": "Canon Canon EOS M100",
+      "settings": "32mm · f/5 · 1/60 · ISO 160"
+    }
+  },
+  {
+    "src": "/img/IMG_5708 2.JPG",
+    "width": 3024,
+    "height": 4032,
+    "title": "Towers Lit After Dark",
+    "category": "architecture",
+    "caption": "Three high-rise towers glow in colored lights above low buildings at night.",
+    "alt": "Three colorful illuminated towers against a night sky.",
+    "date": "2025-03-08",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11",
+      "settings": "4mm · f/1.8 · 1/20 · ISO 1000"
+    }
+  },
+  {
+    "src": "/img/IMG_6460 2.JPG",
+    "width": 6000,
+    "height": 4000,
+    "title": "Players by the Sideline",
+    "category": "event",
+    "caption": "Players in blue and yellow kits cluster near the sideline inside a gym.",
+    "alt": "Players in blue and yellow kits gather on a court.",
+    "date": "2025-02-08",
+    "location": null,
+    "exif": {
+      "camera": "Canon Canon EOS 200D",
+      "settings": "55mm · f/5.6 · 1/80 · ISO 6400"
+    }
+  },
+  {
+    "src": "/img/IMG_6459 2.JPG",
+    "width": 6000,
+    "height": 4000,
+    "title": "Blue and Gold Huddle",
+    "category": "event",
+    "caption": "Blue-shirted players and a yellow-clad goalkeeper listen together on the indoor court.",
+    "alt": "A team huddle in blue and yellow uniforms.",
+    "date": "2025-02-08",
+    "location": null,
+    "exif": {
+      "camera": "Canon Canon EOS 200D",
+      "settings": "52mm · f/5.6 · 1/80 · ISO 6400"
+    }
+  },
+  {
+    "src": "/img/IMG_6458 2.JPG",
+    "width": 6000,
+    "height": 4000,
+    "title": "Players at Midcourt",
+    "category": "event",
+    "caption": "Players stand in a loose circle on an indoor court beside a man in dark clothing.",
+    "alt": "Players gather on an indoor court with a standing figure.",
+    "date": "2025-02-08",
+    "location": null,
+    "exif": {
+      "camera": "Canon Canon EOS 200D",
+      "settings": "30mm · f/5 · 1/100 · ISO 6400"
+    }
+  },
+  {
+    "src": "/img/IMG_7812 2.jpg",
+    "width": 3347,
+    "height": 1882,
+    "title": "Red and White Procession",
+    "category": "event",
+    "caption": "A procession in red and white moves along a narrow path beside a stone wall.",
+    "alt": "A red-and-white procession beside a long wall.",
+    "date": "2025-01-01",
+    "location": null,
+    "exif": {
+      "camera": "Canon Canon EOS M100",
+      "settings": "45mm · f/10 · 1/160 · ISO 100"
+    }
+  },
+  {
+    "src": "/img/IMG_7776 2.jpg",
+    "width": 3368,
+    "height": 1894,
+    "title": "Costume Under Event Lights",
+    "category": "event",
+    "caption": "A participant in a black-and-gold costume speaks into a microphone among onlookers.",
+    "alt": "A costumed participant with a microphone in a crowd.",
+    "date": "2025-01-01",
+    "location": null,
+    "exif": {
+      "camera": "Canon Canon EOS M100",
+      "settings": "45mm · f/6.3 · 1/160 · ISO 100"
+    }
+  },
+  {
+    "src": "/img/IMG_7758 2.jpg",
+    "width": 3368,
+    "height": 1894,
+    "title": "Red Polka-Dot Costume",
+    "category": "event",
+    "caption": "A costumed participant in red and white stands amid a crowd beside decorated storefronts.",
+    "alt": "A costumed figure in red and white before a crowd.",
+    "date": "2025-01-01",
+    "location": null,
+    "exif": {
+      "camera": "Canon Canon EOS M100",
+      "settings": "45mm · f/6.3 · 1/320 · ISO 200"
+    }
+  },
+  {
+    "src": "/img/IMG_7756 2.jpg",
+    "width": 3368,
+    "height": 1894,
+    "title": "Curly Wig in Parade",
+    "category": "event",
+    "caption": "A participant in a curly black wig stands among costumed onlookers at a street gathering.",
+    "alt": "A person in a curly wig among costumed people.",
+    "date": "2025-01-01",
+    "location": null,
+    "exif": {
+      "camera": "Canon Canon EOS M100",
+      "settings": "38mm · f/5.6 · 1/125 · ISO 100"
+    }
+  },
+  {
+    "src": "/img/IMG_7752 2.jpg",
+    "width": 3368,
+    "height": 1885,
+    "title": "Pink Dancers in Formation",
+    "category": "event",
+    "caption": "Dancers in bright pink tops perform in a line beneath red-and-white decorations.",
+    "alt": "Pink-clad dancers perform beneath red-and-white bunting.",
+    "date": "2025-01-01",
+    "location": null,
+    "exif": {
+      "camera": "Canon Canon EOS M100",
+      "settings": "15mm · f/3.5 · 1/800 · ISO 100"
+    }
+  },
+  {
+    "src": "/img/3db8524e-fa10-4131-a58e-48a401c0261c 2.JPG",
+    "width": 1040,
+    "height": 588,
+    "title": "Visitors at Lighted Displays",
+    "category": "event",
+    "caption": "Visitors face illuminated displays in a dark indoor hall beneath hanging banners.",
+    "alt": "Visitors view illuminated displays in a dark hall.",
+    "date": "2024-12-16",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/5ad7b37b-6e7c-41c0-9c9b-aa0abfe16a4c 2.JPG",
+    "width": 1280,
+    "height": 723,
+    "title": "Viewing the Gallery Wall",
+    "category": "portrait",
+    "caption": "A woman in a headscarf studies paintings arranged across a bright gallery wall.",
+    "alt": "A woman in a headscarf views paintings on a gallery wall.",
+    "date": "2024-12-16",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/45f77595-175c-4485-8cb2-2d0e64804293 2.JPG",
+    "width": 853,
+    "height": 1280,
+    "title": "Men Beneath Stage Lights",
+    "category": "portrait",
+    "caption": "Two men pose together under warm lights while a stage glows behind them.",
+    "alt": "Two men pose beneath warm stage lights.",
+    "date": "2024-12-16",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/71bff751-2a22-4dfe-8a91-137b6e954762 2.JPG",
+    "width": 853,
+    "height": 1280,
+    "title": "Small Card at Night",
+    "category": "portrait",
+    "caption": "A woman in a dark headscarf raises a small printed card amid nighttime lights.",
+    "alt": "A woman raises a printed card at a night event.",
+    "date": "2024-12-16",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/8434bbbf-0ec9-45ff-803b-08321521248c 2.JPG",
+    "width": 853,
+    "height": 1280,
+    "title": "Seated Beneath Streetlights",
+    "category": "portrait",
+    "caption": "A seated woman in a patterned top rests her arms while people gather behind her.",
+    "alt": "A seated woman at an outdoor nighttime gathering.",
+    "date": "2024-12-16",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/999ca76e-2f54-4e8a-b5d4-457b91963306 2.JPG",
+    "width": 1280,
+    "height": 853,
+    "title": "Group Under Night Lights",
+    "category": "event",
+    "caption": "A crowd of people leans toward the camera under warm lights at night.",
+    "alt": "A group leans toward the camera under lights at night.",
+    "date": "2024-12-16",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/217ddd9a-6c40-4154-b110-f68a7ab67f3e 2.JPG",
+    "width": 853,
+    "height": 1280,
+    "title": "Expression Under Flash",
+    "category": "portrait",
+    "caption": "A man in a patterned shirt faces the camera amid a close nighttime gathering.",
+    "alt": "A man in a patterned shirt faces the camera at night.",
+    "date": "2024-12-16",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/589afdec-aea3-476c-9c3f-21ef9536d41e 2.JPG",
+    "width": 853,
+    "height": 1280,
+    "title": "Friends with Printed Card",
+    "category": "portrait",
+    "caption": "Two women in headscarves smile toward the camera as one holds a printed card.",
+    "alt": "Two women pose together, one holding a printed card.",
+    "date": "2024-12-16",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/70780924-5d2b-4b2e-8f18-fdbda1960b73 2.JPG",
+    "width": 1280,
+    "height": 853,
+    "title": "Celebration on Blue Carpet",
+    "category": "event",
+    "caption": "A man reacts animatedly among a group gathered on a blue-covered floor at night.",
+    "alt": "A group gathers on a blue floor at night.",
+    "date": "2024-12-16",
+    "location": null,
+    "exif": {
+      "camera": null,
+      "settings": null
+    }
+  },
+  {
+    "src": "/img/IMG_5235 2.jpg",
+    "width": 3024,
+    "height": 4032,
+    "title": "Reaching Toward Camera",
+    "category": "portrait",
+    "caption": "A child reaches toward the camera with a red object blurred in the foreground.",
+    "alt": "A child reaches toward a red blurred object.",
+    "date": "2024-12-15",
+    "location": null,
+    "exif": {
+      "camera": "Apple iPhone 11",
+      "settings": "4mm · f/1.8 · 1/97 · ISO 125"
+    }
+  },
+  {
+    "src": "/img/photo mera.jpeg",
+    "width": 960,
+    "height": 1280,
+    "title": "Corner Shopfront",
+    "category": "street",
+    "caption": "A narrow corner shop with a red sign sits beneath surrounding concrete buildings.",
+    "alt": "A corner storefront with a red sign and parked scooters.",
+    "date": null,
+    "exif": null
+  },
+  {
+    "src": "/img/WhatsApp Image 2026-10-06 at 02.17.12.jpeg",
+    "width": 960,
+    "height": 1280,
+    "title": "Branches Against Blue Sky",
+    "category": "landscape",
+    "caption": "Dark tree branches frame sunlit clouds and patches of blue sky.",
+    "alt": "Tree branches silhouetted against clouds and blue sky.",
+    "date": null,
+    "exif": null
+  },
+  {
+    "src": "/img/WhatsApp Image 2026-10-06 at 02.21.16 (1).jpeg",
+    "width": 854,
+    "height": 1280,
+    "title": "Gathered Beneath Flowers",
+    "category": "event",
+    "caption": "People gather beneath draped fabric and abundant flowers in a softly lit room.",
+    "alt": "People beneath draped fabric and floral decorations.",
+    "date": null,
+    "exif": null
+  },
+  {
+    "src": "/img/WhatsApp Image 2026-10-06 at 02.21.16.jpeg",
+    "width": 854,
+    "height": 1280,
+    "title": "Courtyard Framed by Branches",
+    "category": "architecture",
+    "caption": "A low building with orange rooflines stands across a courtyard beneath a large tree.",
+    "alt": "A courtyard building framed by a large tree.",
+    "date": null,
+    "exif": null
+  },
+  {
+    "src": "/img/WhatsApp Image 2026-10-06 at 02.21.18.jpeg",
+    "width": 854,
+    "height": 1280,
+    "title": "Cake Beneath Floral Canopy",
+    "category": "event",
+    "caption": "Two people stand behind a decorated cake under a dense canopy of flowers.",
+    "alt": "Two people beside a cake beneath flowers.",
+    "date": null,
+    "exif": null
+  },
+  {
+    "src": "/img/WhatsApp Image 2026-10-06 at 02.21.19 (1).jpeg",
+    "width": 854,
+    "height": 1280,
+    "title": "Pale Facade",
+    "category": "architecture",
+    "caption": "A pale, tall facade and exposed roof structure rise against an open sky.",
+    "alt": "A pale facade and exposed roof against the sky.",
+    "date": null,
+    "exif": null
+  },
+  {
+    "src": "/img/WhatsApp Image 2026-10-06 at 02.21.19.jpeg",
+    "width": 854,
+    "height": 1280,
+    "title": "Albums on Shelves",
+    "category": "architecture",
+    "caption": "Vinyl sleeves, framed art, and clothing line the walls above a shop counter.",
+    "alt": "Vinyl sleeves and clothing displayed inside a shop.",
+    "date": null,
+    "exif": null
+  },
+  {
+    "src": "/img/WhatsApp Image 2026-10-06 at 02.21.20 (1).jpeg",
+    "width": 720,
+    "height": 1280,
+    "title": "Wall Sign",
+    "category": "architecture",
+    "caption": "A small dark sign is fixed high on a weathered wall above an open walkway.",
+    "alt": "A small sign high on a weathered wall.",
+    "date": null,
+    "exif": null
+  },
+  {
+    "src": "/img/WhatsApp Image 2026-10-06 at 02.21.20.jpeg",
+    "width": 720,
+    "height": 1280,
+    "title": "Tower View",
+    "category": "architecture",
+    "caption": "A tall rounded building appears beyond a grid of dark window frames.",
+    "alt": "A distant tower seen through window frames.",
+    "date": null,
+    "exif": null
+  }
+];
