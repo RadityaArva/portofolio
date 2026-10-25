@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Raditya Arva Messi Jagaddhita" />
@@ -55,7 +55,7 @@
     />
     <link rel="stylesheet" href="src/style.css" />
   </head>
-  <body>
+  <body class="index-page">
     <div class="bg-mesh" aria-hidden="true"></div>
     <div class="bg-dots" aria-hidden="true"></div>
     <div class="parallax-orb parallax-orb-a" aria-hidden="true"></div>
@@ -141,9 +141,9 @@
     </nav>
 
     <!-- HERO -->
-    <section id="hero" class="relative flex min-h-screen items-center pt-28">
+    <section id="hero" class="relative flex min-h-screen items-center pt-20 sm:pt-28">
       <div
-        class="container-site grid items-center gap-12 py-16 lg:grid-cols-2 lg:gap-20"
+        class="container-site grid items-center gap-8 sm:gap-12 py-12 sm:py-16 lg:grid-cols-2 lg:gap-20"
       >
         <div class="order-2 lg:order-1">
           <p class="eyebrow mb-5" data-reveal>
@@ -180,7 +180,7 @@
           <img
             src="public/img/IMG_3466.JPG"
             alt="Potret Raditya Arva Messi Jagaddhita"
-            class="hero-photo relative w-full max-w-[280px] sm:max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg aspect-square object-cover rounded-3xl shadow-2xl transition-all duration-500"
+            class="hero-photo relative w-full max-w-[340px] sm:max-w-[400px] md:max-w-[480px] lg:max-w-[560px] xl:max-w-[640px] aspect-square object-cover rounded-3xl shadow-2xl transition-all duration-500"
             loading="eager"
             decoding="async"
             fetchpriority="high"
@@ -386,384 +386,156 @@
 
         <div class="space-y-8">
           <!-- Frontend & UI/UX -->
-          <div
-            class="rounded-2xl border border-line/60 bg-card/60 p-4 backdrop-blur-sm md:p-6"
-            data-reveal
-          >
-            <div class="mb-5 flex items-center gap-3">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-xl bg-accent-soft text-accent dark:bg-white/10 dark:text-cyan-300"
-                ><i class="fas fa-palette"></i
-              ></span>
+          <section class="skill-card" data-reveal>
+            <div class="skill-group__header mb-5">
+              <span class="skill-group__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 2C5 2 3 4 3 9c0 5 2 8.5 8 11 6-2.5 8-6 8-11 0-5-2-7-8-7z"/><path d="M9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg></span>
               <div>
-                <h3
-                  class="text-sm font-semibold tracking-wide md:text-[0.95rem]"
-                >
-                  Frontend &amp; UI/UX Design
-                </h3>
-                <p class="text-xs text-mute">
-                  Interface, framework &amp; design tools
-                </p>
+                <h3>Frontend &amp; UI/UX Design</h3>
+                <p>Interface, framework &amp; design tools</p>
               </div>
             </div>
-            <div
-              class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
-            >
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/html5.webp" type="image/webp" />
-                  <img
-                    src="/icons/html5.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>HTML5</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/css3.webp" type="image/webp" />
-                  <img
-                    src="/icons/css3.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>CSS3</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/javascript.webp" type="image/webp" />
-                  <img
-                    src="/icons/javascript.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>JavaScript</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/typescript.webp" type="image/webp" />
-                  <img
-                    src="/icons/typescript.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>TypeScript</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/react.webp" type="image/webp" />
-                  <img
-                    src="/icons/react.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>React</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/tailwind.webp" type="image/webp" />
-                  <img
-                    src="/icons/tailwind.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Tailwind</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/bootstrap.webp" type="image/webp" />
-                  <img
-                    src="/icons/bootstrap.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Bootstrap</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/figma.webp" type="image/webp" />
-                  <img
-                    src="/icons/figma.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Figma</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/canva.webp" type="image/webp" />
-                  <img
-                    src="/icons/canva.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Canva</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/vscode.webp" type="image/webp" />
-                  <img
-                    src="/icons/vscode.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>VS Code</span>
-              </div>
-            </div>
-          </div>
+            <hr class="skill-group__divider" aria-hidden="true" />
+            <ul class="skill-grid gap-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+              <li class="skill-item">
+                <img src="/icons/html5.svg" alt="HTML5" width="36" height="36" loading="lazy" /><span>HTML5</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/css3.svg" alt="CSS3" width="36" height="36" loading="lazy" /><span>CSS3</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/javascript.svg" alt="JavaScript" width="36" height="36" loading="lazy" /><span>JavaScript</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/typescript.svg" alt="TypeScript" width="36" height="36" loading="lazy" /><span>TypeScript</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/react.svg" alt="React" width="36" height="36" loading="lazy" /><span>React</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/tailwind.svg" alt="Tailwind" width="36" height="36" loading="lazy" /><span>Tailwind</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/bootstrap.svg" alt="Bootstrap" width="32" height="32" loading="lazy" /><span>Bootstrap</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/figma.svg" alt="Figma" width="36" height="36" loading="lazy" /><span>Figma</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/canva.svg" alt="Canva" width="32" height="32" loading="lazy" /><span>Canva</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/vscode.svg" alt="VS Code" width="36" height="36" loading="lazy" /><span>VS Code</span>
+              </li>
+            </ul>
+          </section>
           <!-- Backend -->
-          <div
-            class="rounded-2xl border border-line/60 bg-card/60 p-4 backdrop-blur-sm md:p-6"
-            data-reveal
-            data-delay="0.06"
-          >
-            <div class="mb-5 flex items-center gap-3">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-xl bg-accent-soft text-accent dark:bg-white/10 dark:text-cyan-300"
-                ><i class="fas fa-server"></i
-              ></span>
+          <section class="skill-card" data-reveal data-delay="0.06">
+            <div class="skill-group__header mb-5">
+              <span class="skill-group__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 2h-8c-0.6 0-1 0.4-1 1v12c0 0.6 0.4 1 1 1h8c0.6 0 1-0.4 1-1V3c0-0.6-0.4-1-1-1z"/><path d="M8 8H6c-0.6 0-1 0.4-1 1v1c0 0.6 0.4 1 1 1h2c0.6 0 1-0.4 1-1V9c0-0.6-0.4-1-1-1z"/><path d="M16 8h-2c-0.6 0-1 0.4-1 1v1c0 0.6 0.4 1 1 1h2c0.6 0 1-0.4 1-1V9c0-0.6-0.4-1-1-1z"/><path d="M16 13h-2c-0.6 0-1 0.4-1 1v1c0 0.6 0.4 1 1 1h2c0.6 0 1-0.4 1-1v-1c0-0.6-0.4-1-1-1z"/></svg></span>
               <div>
-                <h3
-                  class="text-sm font-semibold tracking-wide md:text-[0.95rem]"
-                >
-                  Backend
-                </h3>
-                <p class="text-xs text-mute">Server, database &amp; DevOps</p>
+                <h3>Backend</h3>
+                <p>Server, database &amp; DevOps</p>
               </div>
             </div>
-            <div
-              class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
-            >
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/php.webp" type="image/webp" />
-                  <img
-                    src="/icons/php.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>PHP</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/java.webp" type="image/webp" />
-                  <img
-                    src="/icons/java.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Java</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/python.webp" type="image/webp" />
-                  <img
-                    src="/icons/python.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Python</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/mysql.webp" type="image/webp" />
-                  <img
-                    src="/icons/mysql.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>MySQL</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/mongodb.webp" type="image/webp" />
-                  <img
-                    src="/icons/mongodb.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>MongoDB</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/docker.webp" type="image/webp" />
-                  <img
-                    src="/icons/docker.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Docker</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/git.webp" type="image/webp" />
-                  <img
-                    src="/icons/git.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Git</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/github.webp" type="image/webp" />
-                  <img
-                    src="/icons/github.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy"
-                    class="gh-invert" /></picture
-                ><span>GitHub</span>
-              </div>
-            </div>
-          </div>
+            <hr class="skill-group__divider" aria-hidden="true" />
+            <ul class="skill-grid gap-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+              <li class="skill-item">
+                <img src="/icons/php.svg" alt="PHP" width="36" height="36" loading="lazy" /><span>PHP</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/java.svg" alt="Java" width="36" height="36" loading="lazy" /><span>Java</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/python.svg" alt="Python" width="36" height="36" loading="lazy" /><span>Python</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/mysql.svg" alt="MySQL" width="36" height="36" loading="lazy" /><span>MySQL</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/mongodb.svg" alt="MongoDB" width="36" height="36" loading="lazy" /><span>MongoDB</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/docker.svg" alt="Docker" width="36" height="36" loading="lazy" /><span>Docker</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/git.svg" alt="Git" width="36" height="36" loading="lazy" /><span>Git</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/github.svg" alt="GitHub" width="36" height="36" loading="lazy" class="gh-invert" /><span class="text-sm sm:text-base">GitHub</span>
+              </li>
+            </ul>
+          </section>
 
           <!-- Cybersecurity -->
-          <div
-            class="rounded-2xl border border-line/60 bg-card/60 p-4 backdrop-blur-sm md:p-6"
-            data-reveal
-            data-delay="0.12"
-          >
-            <div class="mb-5 flex items-center gap-3">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-xl bg-accent-soft text-accent dark:bg-white/10 dark:text-cyan-300"
-                ><i class="fas fa-shield-halved"></i
-              ></span>
+          <section class="skill-card" data-reveal data-delay="0.12">
+            <div class="skill-group__header mb-5">
+              <span class="skill-group__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
               <div>
-                <h3
-                  class="text-sm font-semibold tracking-wide md:text-[0.95rem]"
-                >
-                  Cybersecurity &amp; Network
-                </h3>
-                <p class="text-xs text-mute">
-                  Security, pentest &amp; network tools
-                </p>
+                <h3>Cybersecurity &amp; Network</h3>
+                <p>Security, pentest &amp; network tools</p>
               </div>
             </div>
-            <div
-              class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
-            >
-              <div class="skill-item">
+            <hr class="skill-group__divider" aria-hidden="true" />
+            <ul class="skill-grid gap-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+              <li class="skill-item">
                 <img src="/icons/wireshark.svg" alt="Wireshark" width="32" height="32" loading="lazy" />
                 <span>Wireshark</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img src="/icons/burpsuite.svg" alt="Burp Suite" width="32" height="32" loading="lazy" />
                 <span>Burp Suite</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img src="/icons/kalilinux.svg" alt="Kali Linux" width="32" height="32" loading="lazy" />
                 <span>Kali Linux</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img src="/icons/nmap.svg" alt="Nmap" width="32" height="32" loading="lazy" />
                 <span>Nmap</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img src="/icons/cisco.svg" alt="Cisco" width="32" height="32" loading="lazy" />
                 <span>Cisco</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img src="/icons/metasploit.svg" alt="Metasploit" width="32" height="32" loading="lazy" />
                 <span>Metasploit</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img src="/icons/owasp.svg" alt="OWASP ZAP" width="32" height="32" loading="lazy" />
                 <span>OWASP ZAP</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img src="/icons/johnripper.svg" alt="John the Ripper" width="32" height="32" loading="lazy" />
                 <span>John Ripper</span>
-              </div>
-            </div>
-          </div>
+              </li>
+            </ul>
+          </section>
 
           <!-- Productivity -->
-          <div
-            class="rounded-2xl border border-line/60 bg-card/60 p-4 backdrop-blur-sm md:p-6"
-            data-reveal
-            data-delay="0.18"
-          >
-            <div class="mb-5 flex items-center gap-3">
-              <span
-                class="grid h-9 w-9 place-items-center rounded-xl bg-accent-soft text-accent dark:bg-white/10 dark:text-cyan-300"
-                ><i class="fas fa-briefcase"></i
-              ></span>
+          <section class="skill-card" data-reveal data-delay="0.18">
+            <div class="skill-group__header mb-5">
+              <span class="skill-group__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M3 9h18v2H3z"/><path d="M16 3h2v18h-2z"/></svg></span>
               <div>
-                <h3
-                  class="text-sm font-semibold tracking-wide md:text-[0.95rem]"
-                >
-                  Productivity
-                </h3>
-                <p class="text-xs text-mute">
-                  Collaboration &amp; office tools
-                </p>
+                <h3>Productivity</h3>
+                <p>Collaboration &amp; office tools</p>
               </div>
             </div>
-            <div
-              class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
-            >
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/notion.webp" type="image/webp" />
-                  <img
-                    src="/icons/notion.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Notion</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/trello.webp" type="image/webp" />
-                  <img
-                    src="/icons/trello.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Trello</span>
-              </div>
-              <div class="skill-item">
-                <picture
-                  ><source srcset="/icons/toggl.webp" type="image/webp" />
-                  <img
-                    src="/icons/toggl.png"
-                    alt=""
-                    width="36"
-                    height="36"
-                    loading="lazy" /></picture
-                ><span>Toggl</span>
-              </div>
-              <div class="skill-item">
-                <img
-                  src="/icons/excell.png"
-                  alt=""
-                  width="36"
-                  height="36"
-                  loading="lazy"
-                /><span>Excel</span>
-              </div>
-              <div class="skill-item">
+            <hr class="skill-group__divider" aria-hidden="true" />
+            <ul class="skill-grid gap-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
+              <li class="skill-item">
+                <img src="/icons/notion.svg" alt="Notion" width="36" height="36" loading="lazy" /><span>Notion</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/trello.svg" alt="Trello" width="36" height="36" loading="lazy" /><span>Trello</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/toggl.svg" alt="Toggl" width="36" height="36" loading="lazy" /><span>Toggl</span>
+              </li>
+              <li class="skill-item">
+                <img src="/icons/excell.png" alt="Excel" width="36" height="36" loading="lazy" /><span>Excel</span>
+              </li>
+              <li class="skill-item">
                 <img
                   src="/icons/wordd.png"
                   alt=""
@@ -771,8 +543,8 @@
                   height="36"
                   loading="lazy"
                 /><span>Word</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img
                   src="/icons/powerpointt.png"
                   alt=""
@@ -780,8 +552,8 @@
                   height="36"
                   loading="lazy"
                 /><span>PowerPoint</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img
                   src="/icons/slack.svg"
                   alt=""
@@ -789,17 +561,17 @@
                   height="36"
                   loading="lazy"
                 /><span>Slack</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img
-                  src="/icons/uggle.svg"
+                  src="/icons/google.png"
                   alt=""
                   width="36"
                   height="36"
                   loading="lazy"
                 /><span>Workspace</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img
                   src="/icons/discord.svg"
                   alt=""
@@ -807,8 +579,8 @@
                   height="36"
                   loading="lazy"
                 /><span>Discord</span>
-              </div>
-              <div class="skill-item">
+              </li>
+              <li class="skill-item">
                 <img
                   src="/icons/asana.svg"
                   alt=""
@@ -816,25 +588,13 @@
                   height="36"
                   loading="lazy"
                 /><span>Asana</span>
-              </div>
-            </div>
-          </div>
+              </li>
+            </ul>
+          </section>
         </div>
       </div>
     </div>
   </section>
-
-  <footer class="border-t border-line py-8">
-    <div class="container-site flex flex-col items-center justify-between gap-2 text-sm text-mute md:flex-row">
-      <span class="font-display font-semibold text-ink">Raditya Arva Messi Jagaddhita</span>
-      <p>&copy; <span id="year"></span></p>
-    </div>
-  </footer>
-
-  <script type="module" src="/src/main.js"></script>
-</body>
-
-    </section>
 
     <!-- PROJECTS -->
     <section id="projects" class="section-pad">
@@ -894,23 +654,23 @@
       <div class="container-site relative z-10">
         <p class="eyebrow mb-4" data-reveal>06 — Contact</p>
         <div
-          class="rounded-3xl border border-line bg-card p-8 shadow-lg backdrop-blur-sm md:p-12"
+          class="rounded-3xl border border-line bg-card p-6 sm:p-8 md:p-10 lg:p-12 shadow-lg backdrop-blur-sm"
           data-reveal="scale"
           data-delay="0.05"
         >
           <div
-            class="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16"
+            class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 md:items-center"
           >
             <div>
               <h2
-                class="font-display text-4xl font-semibold tracking-tight md:text-5xl"
+                class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-ink"
                 data-reveal
                 data-delay="0.08"
               >
                 Let's build<br />something great.
               </h2>
               <p
-                class="mt-4 max-w-lg text-lg leading-relaxed text-mute"
+                class="mt-3 max-w-lg text-sm sm:text-base leading-relaxed text-mute md:text-lg"
                 data-reveal
                 data-delay="0.12"
               >
@@ -918,89 +678,89 @@
                 Whether you have a brief, want to collaborate, or just say hi,
                 feel free to reach out.
               </p>
-              <div class="mt-8 flex flex-col gap-5">
+              <div class="mt-6 flex flex-col gap-4 sm:gap-5" data-reveal data-delay="0.14">
                 <div>
                   <p
-                    class="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-mute"
+                    class="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-mute"
                   >
                     Email
                   </p>
                   <a
                     href="mailto:radityaarvamessijagaddhita@gmail.com"
-                    class="text-xl font-medium text-ink hover:text-accent transition duration-300"
+                    class="text-sm sm:text-base md:text-lg font-medium text-ink hover:text-accent transition duration-300 break-all sm:break-normal inline-block max-w-full"
                   >
                     radityaarvamessijagaddhita@gmail.com
                   </a>
                 </div>
                 <div>
                   <p
-                    class="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-mute"
+                    class="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-mute"
                   >
                     Location
                   </p>
-                  <p class="text-lg text-mute">Indonesia, GMT+7</p>
+                  <p class="text-sm sm:text-base text-mute">Indonesia, GMT+7</p>
                 </div>
               </div>
             </div>
 
-            <div class="space-y-6" data-reveal data-delay="0.15">
+            <div class="space-y-5 sm:space-y-6" data-reveal data-delay="0.15">
               <div>
-                <h3 class="mb-4 text-lg font-semibold">Social Links</h3>
-                <div class="space-y-3">
+                <h3 class="mb-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] text-mute">Social Links</h3>
+                <div class="space-y-2 sm:space-y-2.5">
                   <a
                     href="https://github.com/RadityaArva"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex items-center gap-3 text-ink hover:text-accent transition duration-300 group"
+                    class="flex items-center gap-3 text-ink hover:text-accent transition duration-300 group py-1"
                   >
                     <div
-                      class="grid h-10 w-10 place-items-center rounded-lg bg-accent-soft group-hover:bg-accent/20 transition duration-300"
+                      class="grid h-9 w-9 sm:h-10 sm:w-10 place-items-center rounded-lg bg-accent-soft group-hover:bg-accent/20 transition duration-300 shrink-0"
                     >
                       <i
-                        class="fab fa-github text-accent group-hover:text-ink"
+                        class="fab fa-github text-accent group-hover:text-ink text-sm sm:text-base"
                       ></i>
                     </div>
-                    <span>GitHub</span>
+                    <span class="text-sm sm:text-base font-medium">GitHub</span>
                   </a>
                   <a
                     href="https://www.linkedin.com/in/raditya-arva-messi-jagaddhita/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex items-center gap-3 text-ink hover:text-accent transition duration-300 group"
+                    class="flex items-center gap-3 text-ink hover:text-accent transition duration-300 group py-1"
                   >
                     <div
-                      class="grid h-10 w-10 place-items-center rounded-lg bg-accent-soft group-hover:bg-accent/20 transition duration-300"
+                      class="grid h-9 w-9 sm:h-10 sm:w-10 place-items-center rounded-lg bg-accent-soft group-hover:bg-accent/20 transition duration-300 shrink-0"
                     >
                       <i
-                        class="fab fa-linkedin text-accent group-hover:text-ink"
+                        class="fab fa-linkedin text-accent group-hover:text-ink text-sm sm:text-base"
                       ></i>
                     </div>
-                    <span>LinkedIn</span>
+                    <span class="text-sm sm:text-base font-medium">LinkedIn</span>
                   </a>
                   <a
                     href="https://www.instagram.com/sudoaptremove/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex items-center gap-3 text-ink hover:text-accent transition duration-300 group"
+                    class="flex items-center gap-3 text-ink hover:text-accent transition duration-300 group py-1"
                   >
                     <div
-                      class="grid h-10 w-10 place-items-center rounded-lg bg-accent-soft group-hover:bg-accent/20 transition duration-300"
+                      class="grid h-9 w-9 sm:h-10 sm:w-10 place-items-center rounded-lg bg-accent-soft group-hover:bg-accent/20 transition duration-300 shrink-0"
                     >
                       <i
-                        class="fab fa-instagram text-accent group-hover:text-ink"
+                        class="fab fa-instagram text-accent group-hover:text-ink text-sm sm:text-base"
                       ></i>
                     </div>
-                    <span>Instagram</span>
+                    <span class="text-sm sm:text-base font-medium">Instagram</span>
                   </a>
                 </div>
               </div>
-              <div>
+              <div class="pt-1">
                 <h3
-                  class="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-mute"
+                  class="mb-1 text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] text-mute"
                 >
                   Response Time
                 </h3>
-                <p class="text-sm text-mute">Usually within 24 hours</p>
+                <p class="text-sm sm:text-base text-mute">Usually within 24 hours</p>
               </div>
             </div>
           </div>
@@ -1008,16 +768,31 @@
       </div>
     </section>
 
-    <footer class="border-t border-line py-8">
-      <div
-        class="container-site flex flex-col items-center justify-between gap-2 text-sm text-mute md:flex-row"
-      >
-        <span class="font-display font-semibold text-ink"
-          >Raditya Arva Messi Jagaddhita</span
-        >
-        <p>&copy; <span id="year"></span></p>
+    <footer class="border-t border-line bg-soft/40 backdrop-blur-md">
+      <div class="container-site py-8 sm:py-10">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+          <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
+            <span class="font-display font-semibold text-sm sm:text-base text-ink tracking-tight">Raditya Arva Messi Jagaddhita</span>
+            <span class="hidden sm:inline text-mute/30" aria-hidden="true">|</span>
+            <p class="text-xs text-mute">&copy; <span id="year"></span> All rights reserved.</p>
+          </div>
+          <div class="flex items-center">
+            <a
+              href="#hero"
+              class="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-line bg-card/60 text-xs font-medium text-mute hover:text-accent hover:border-accent/40 transition-all duration-300 shadow-sm"
+              aria-label="Kembali ke atas"
+            >
+              <span>Kembali ke atas</span>
+              <i class="fas fa-arrow-up text-[10px] transition-transform duration-300 group-hover:-translate-y-0.5"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
+
+    <!-- Cursor follower & ambient glow (mouse holder) -->
+    <div id="cursorGlow" class="cursor-glow pointer-events-none fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 transition-opacity duration-500 z-10" aria-hidden="true"></div>
+    <div id="cursorDot" class="cursor-dot pointer-events-none fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 transition-opacity duration-300 z-50 hidden sm:block" aria-hidden="true"></div>
 
     <script type="module" src="/src/main.js"></script>
   </body>

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "cuopt-developer": {
+      "source": "NVIDIA/skills",
+      "sourceType": "github",
+      "skillPath": "skills/cuopt-developer/SKILL.md",
+      "computedHash": "5d4abbe69c1a134e004c48d20c4fdcdec73f4662be36b51ea0bd704ad1bbeba0"
+    }
+  }
+}

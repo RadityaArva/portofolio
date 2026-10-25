@@ -1,7 +1,7 @@
 import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { loadProjects } from './projects-store.js'
+import { loadProjects, normalizeLink } from './projects-store.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -9,6 +9,24 @@ const $ = (id) => document.getElementById(id)
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)]
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 const easeSoft = 'power3.out'
+
+/* ---------- Tahap 4 — kemampuan perangkat & progressive enhancement ---------- */
+document.documentElement.classList.add('js')
+const reduceMotionMQ = window.matchMedia('(prefers-reduced-motion: reduce)')
+const isWeakDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4
+const mobileViewportMQ = window.matchMedia('(max-width: 767px)')
+const BASE_AMPLITUDE = 24 // px
+let parallaxAmplitude = BASE_AMPLITUDE
+
+function recomputeAmplitude() {
+  let amp = BASE_AMPLITUDE
+  if (reduceMotion || isWeakDevice) amp = 0
+  else if (mobileViewportMQ.matches) amp = BASE_AMPLITUDE / 2
+  parallaxAmplitude = amp
+}
+recomputeAmplitude()
+reduceMotionMQ.addEventListener('change', recomputeAmplitude)
+mobileViewportMQ.addEventListener('change', recomputeAmplitude)
 
 /* ---------- Theme ---------- */
 const root = document.documentElement
@@ -139,44 +157,137 @@ const updateNav = () => {
 window.addEventListener('scroll', updateNav, { passive: true })
 updateNav()
 
-/* ---------- Soft parallax ---------- */
-function initParallax() {
-  if (reduceMotion) return
+/* ---------- Tahap 4 — parallax loop ringan (rAF bersama, smooth lerp) ---------- */
+const supportsScrollTimeline = CSS.supports('animation-timeline: scroll()')
 
-  const orbs = $$('.parallax-orb')
-  const dots = document.querySelector('.bg-dots')
-  const layers = $$('[data-parallax]')
-  const state = { y: 0, target: 0 }
+let parallaxRAF = null
+let parallaxScrollY = 0
+let docHidden = false
+const active = new Map() // elemen yang sedang terlihat dan dianimasikan
+const MAX_ACTIVE = 12
+const LERP = 0.12 // semakin kecil semakin halus/lembut
 
-  window.addEventListener(
-    'scroll',
-    () => {
-      state.target = window.scrollY
-    },
-    { passive: true }
-  )
+function clamp(v, a, b) { return Math.max(a, Math.min(b, v)) }
 
-  gsap.ticker.add(() => {
-    state.y += (state.target - state.y) * 0.06
-    const y = state.y
-
-    if (dots) dots.style.transform = `translate3d(0, ${y * 0.06}px, 0)`
-
-    orbs.forEach((orb, i) => {
-      const speed = 0.03 + i * 0.025
-      orb.style.transform = `translate3d(0, ${y * speed}px, 0)`
-    })
-
-    layers.forEach((el) => {
-      const speed = Number(el.dataset.parallax) || 0.1
-      const rect = el.getBoundingClientRect()
-      const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * speed * -1
-      el.style.transform = `translate3d(0, ${offset}px, 0)`
-    })
-  })
+/* Progress bar tipis di atas halaman */
+function updateProgress() {
+  const bar = $('scrollProgress')
+  if (!bar) return
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+  const p = maxScroll > 0 ? clamp(parallaxScrollY / maxScroll, 0, 1) : 0
+  bar.style.width = (p * 100) + '%'
 }
 
-initParallax()
+function setWillChange(el, active) {
+  el.style.willChange = active ? 'transform, opacity' : 'auto'
+}
+
+/* Hitung transform parallax untuk satu elemen. Hanya translate3d + opacity. */
+function applyParallax(el) {
+  const vh = window.innerHeight
+  const rect = el.getBoundingClientRect()
+  const center = rect.top + parallaxScrollY + rect.height / 2
+  const mid = parallaxScrollY + vh / 2
+  // p: -1 (di bawah layar) .. 0 (tengah layar) .. 1 (di atas layar)
+  const p = clamp((mid - center) / (vh / 2), -1, 1)
+  const amp = parallaxAmplitude // sudah difaktorkan (0 bila reduced-motion/lemah, setengah di HP)
+  const factor = Number(el.dataset.parallax) || 1
+  const y = -p * amp * factor
+  const rot = clamp(p * 2, -2, 2) // rotasi maks 2 derajat, lebih halus
+  el.style.transform = `translate3d(0, ${y}px, 0) rotate(${rot}deg)`
+  el.style.opacity = 1 - Math.abs(p) * 0.1
+  setWillChange(el, true)
+}
+
+function resetParallax(el) {
+  el.style.transform = ''
+  el.style.opacity = ''
+  setWillChange(el, false)
+}
+
+function heroExitEffect() {
+  const hero = $('hero')
+  if (!hero) return
+  const rect = hero.getBoundingClientRect()
+  // hero mulai keluar layar atas: skala mengecil sedikit + memudar
+  const exit = clamp((-rect.bottom) / 220, 0, 1)
+  if (exit > 0) {
+    hero.style.transform = `scale(${1 - exit * 0.03})`
+    hero.style.opacity = 1 - exit * 0.25
+    setWillChange(hero, true)
+  } else {
+    hero.style.transform = ''
+    hero.style.opacity = ''
+    setWillChange(hero, false)
+  }
+}
+
+function loop() {
+  parallaxRAF = null
+  if (docHidden || reduceMotion || isWeakDevice || parallaxAmplitude === 0) {
+    active.forEach(resetParallax)
+    active.clear()
+    return
+  }
+  updateProgress()
+  heroExitEffect()
+  // batasi jumlah elemen aktif bersamaan
+  let n = 0
+  for (const el of active.keys()) {
+    if (n >= MAX_ACTIVE) { resetParallax(el); active.delete(el); continue }
+    applyParallax(el)
+    n++
+  }
+  if (!docHidden) parallaxRAF = requestAnimationFrame(loop)
+}
+
+function startParallax() {
+  if (supportsScrollTimeline) return // CSS scroll-driven menangani animasi
+  if (parallaxRAF !== null) return
+  parallaxRAF = requestAnimationFrame(loop)
+}
+
+window.addEventListener(
+  'scroll',
+  () => { parallaxScrollY = window.scrollY; startParallax() },
+  { passive: true }
+)
+
+document.addEventListener('visibilitychange', () => {
+  docHidden = document.hidden
+  if (docHidden) {
+    if (parallaxRAF !== null) { cancelAnimationFrame(parallaxRAF); parallaxRAF = null }
+    active.forEach(resetParallax)
+    active.clear()
+  } else {
+    startParallax()
+  }
+})
+
+/* Kumpulkan target parallax dan pantau visibilitas lewat IntersectionObserver */
+function initParallaxTargets() {
+  if (reduceMotion || isWeakDevice || parallaxAmplitude === 0) return
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const el = entry.target
+      if (entry.isIntersecting) {
+        if (active.size < MAX_ACTIVE) active.set(el, true)
+      } else {
+        active.delete(el)
+        resetParallax(el)
+      }
+    })
+  }, { rootMargin: '12% 0% 12% 0%', threshold: 0 })
+
+  const targets = [...$$('.parallax-orb'), ...$$('[data-parallax]')]
+  const heroGrid = $('hero')?.querySelector('.container-site')
+  if (heroGrid) targets.push(heroGrid)
+  targets.forEach((el) => io.observe(el))
+
+  startParallax()
+}
+
+initParallaxTargets()
 
 /* ---------- Hero name + photo animations ---------- */
 function initHeroMotion() {
@@ -268,17 +379,17 @@ function initReveals() {
   els.forEach((el) => {
     const type = el.getAttribute('data-reveal')
     const delay = Number(el.dataset.delay || 0)
-    const from = { opacity: 0, y: 30, x: 0, scale: 1 }
+    const from = { opacity: 0, y: 20, x: 0, scale: 1 }
 
     if (type === 'left') {
-      from.x = -28
-      from.y = 12
+      from.x = -20
+      from.y = 10
     } else if (type === 'right') {
-      from.x = 28
-      from.y = 12
+      from.x = 20
+      from.y = 10
     } else if (type === 'scale') {
-      from.scale = 0.97
-      from.y = 20
+      from.scale = 0.98
+      from.y = 16
     }
 
     gsap.fromTo(
@@ -289,12 +400,12 @@ function initReveals() {
         x: 0,
         y: 0,
         scale: 1,
-        duration: 1.05,
+        duration: 1.2,
         delay,
-        ease: easeSoft,
+        ease: 'power4.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 88%',
+          start: 'top 85%',
           toggleActions: 'play none none reverse',
         },
       }
@@ -304,14 +415,14 @@ function initReveals() {
   gsap.utils.toArray('.skill-item').forEach((item, i) => {
     gsap.from(item, {
       opacity: 0,
-      y: 22,
-      scale: 0.97,
-      duration: 0.65,
-      delay: (i % 7) * 0.04,
-      ease: easeSoft,
+      y: 10,
+      scale: 0.98,
+      duration: 1.0,
+      delay: Math.min(i * 0.03, 1.2),
+      ease: 'power4.out',
       scrollTrigger: {
         trigger: '#skills',
-        start: 'top 78%',
+        start: 'top 82%',
         toggleActions: 'play none none reverse',
       },
     })
@@ -381,22 +492,88 @@ function renderSlides(projects) {
   list.forEach((project, i) => {
     const num = String(i + 1).padStart(2, '0')
     const totalStr = String(total).padStart(2, '0')
+
+    const stackItems = (project.stack || '')
+      .split(/[·,]/)
+      .map((s) => s.trim())
+      .filter(Boolean)
+
+    const stackBadges = stackItems.length
+      ? stackItems.map((s) => `<span class="slide-tag">${escapeHtml(s)}</span>`).join('')
+      : `<span class="slide-tag">${escapeHtml(project.stack || 'Project')}</span>`
+
+    let imgSrc = project.image || ''
+    if (imgSrc.startsWith('public/')) {
+      imgSrc = '/' + imgSrc.replace(/^public\//, '')
+    }
+
     const article = document.createElement('article')
     article.className = 'slide'
     article.innerHTML = `
       <div class="slide-img">
-        <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" width="800" height="520" loading="${i === 0 ? 'eager' : 'lazy'}" />
+        <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(project.title)}" width="1600" height="1000" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw" loading="${i === 0 ? 'eager' : 'lazy'}" />
+        <span class="slide-fallback" aria-hidden="true"><i class="fas fa-image mr-2"></i><span>Gambar tidak tersedia</span></span>
       </div>
       <div class="slide-body">
-        <span class="text-xs font-semibold uppercase tracking-[0.16em] text-mute">${num} / ${totalStr} · ${escapeHtml(project.stack)}</span>
-        <h3 class="font-display text-2xl font-semibold md:text-3xl">${escapeHtml(project.title)}</h3>
-        <p class="text-mute">${escapeHtml(project.description)}</p>
-        <a href="${escapeHtml(project.link || '#')}" class="btn-ghost mt-2" ${project.link && project.link !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''}>
-          ${escapeHtml(project.linkLabel || 'View Project')} <i class="fas fa-arrow-right text-xs"></i>
-        </a>
+        <div class="slide-meta">
+          <span class="slide-counter">${num} / ${totalStr}</span>
+          <div class="slide-tags">${stackBadges}</div>
+        </div>
+        <h3 class="slide-title font-display text-2xl sm:text-3xl font-semibold tracking-tight">${escapeHtml(project.title)}</h3>
+        <p class="slide-desc leading-relaxed line-clamp-3 sm:line-clamp-4">${escapeHtml(project.description)}</p>
+        <div class="slide-link-container pt-1"></div>
       </div>
     `
     track.appendChild(article)
+
+    /* Render tombol lewat DOM (setAttribute) bukan innerHTML, dengan validasi ulang */
+    const linkContainer = article.querySelector('.slide-link-container')
+    const linkResult = normalizeLink(project.link || '#')
+    if (linkResult.valid) {
+      const a = document.createElement('a')
+      a.className = 'project-btn-cta group'
+      a.setAttribute('href', linkResult.href)
+
+      const span = document.createElement('span')
+      span.textContent = project.linkLabel || 'View Project'
+      a.appendChild(span)
+
+      const icon = document.createElement('i')
+      icon.className = 'fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1'
+      a.appendChild(icon)
+
+      if (linkResult.type === 'external') {
+        a.setAttribute('target', '_blank')
+        a.setAttribute('rel', 'noopener noreferrer')
+      }
+      linkContainer.appendChild(a)
+    }
+
+    const slideImg = article.querySelector('.slide-img')
+    const slideImgEl = slideImg.querySelector('img')
+    slideImgEl.addEventListener('error', () => {
+      slideImgEl.classList.add('is-broken')
+      slideImg.classList.add('has-broken-image')
+    }, { once: true })
+
+    /* Subtle interactive card tilt for extra life on desktop */
+    if (!reduceMotion && !isWeakDevice) {
+      article.addEventListener('pointermove', (e) => {
+        const rect = article.getBoundingClientRect()
+        const x = (e.clientX - rect.left) / rect.width - 0.5
+        const y = (e.clientY - rect.top) / rect.height - 0.5
+        gsap.to(slideImg, {
+          rotateY: x * 5,
+          rotateX: -y * 5,
+          transformPerspective: 1000,
+          duration: 0.35,
+          ease: 'power2.out',
+        })
+      })
+      article.addEventListener('pointerleave', () => {
+        gsap.to(slideImg, { rotateX: 0, rotateY: 0, duration: 0.6, ease: easeSoft })
+      })
+    }
   })
 
   let current = 0
@@ -448,6 +625,98 @@ function renderSlides(projects) {
 }
 
 renderSlides(loadProjects())
+
+/* ---------- Cursor follower & ambient glow (Mouse Holder) ---------- */
+function initCursorFollower() {
+  if (reduceMotion || window.matchMedia('(hover: none) or (pointer: coarse)').matches) return
+
+  const glow = $('cursorGlow')
+  const dot = $('cursorDot')
+  if (!glow && !dot) return
+
+  let mouseX = window.innerWidth / 2
+  let mouseY = window.innerHeight / 2
+  let glowX = mouseX
+  let glowY = mouseY
+  let dotX = mouseX
+  let dotY = mouseY
+  let isVisible = false
+  let isHovering = false
+
+  window.addEventListener('pointermove', (e) => {
+    mouseX = e.clientX
+    mouseY = e.clientY
+    if (!isVisible) {
+      isVisible = true
+      glowX = mouseX
+      glowY = mouseY
+      dotX = mouseX
+      dotY = mouseY
+      if (glow) glow.style.opacity = '1'
+      if (dot) dot.style.opacity = '1'
+    }
+  }, { passive: true })
+
+  document.addEventListener('mouseleave', () => {
+    isVisible = false
+    if (glow) glow.style.opacity = '0'
+    if (dot) dot.style.opacity = '0'
+  })
+
+  document.addEventListener('mouseenter', () => {
+    isVisible = true
+    if (glow) glow.style.opacity = '1'
+    if (dot) dot.style.opacity = '1'
+  })
+
+  const interactiveSelector = 'a, button, input, textarea, select, .slide, .skill-item, [role="button"], .slider-btn'
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      if (!isHovering) {
+        isHovering = true
+        dot?.classList.add('is-hovering')
+      }
+    } else {
+      if (isHovering) {
+        isHovering = false
+        dot?.classList.remove('is-hovering')
+      }
+    }
+  }, { passive: true })
+
+  function renderCursor() {
+    if (isVisible) {
+      glowX += (mouseX - glowX) * 0.08
+      glowY += (mouseY - glowY) * 0.08
+      if (glow) glow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0)`
+
+      dotX += (mouseX - dotX) * 0.22
+      dotY += (mouseY - dotY) * 0.22
+      if (dot) dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`
+    }
+    requestAnimationFrame(renderCursor)
+  }
+
+  requestAnimationFrame(renderCursor)
+}
+
+initCursorFollower()
+
+/* ---------- Smooth anchor scroll behavior ---------- */
+$$('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', (e) => {
+    const href = anchor.getAttribute('href')
+    if (href === '#' || !href) return
+    const target = document.querySelector(href)
+    if (target) {
+      e.preventDefault()
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      if (history.pushState) {
+        history.pushState(null, '', href)
+      }
+    }
+  })
+})
 
 const year = $('year')
 if (year) year.textContent = String(new Date().getFullYear())
